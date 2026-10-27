@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>13:46 ❤️ Para meu Benzinho</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(135deg, #3d0009, #a50021, #ff1744);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%;
+    max-width: 440px;
+    padding: 30px 22px;
+    text-align: center;
+    background: rgba(65, 0, 12, 0.75);
+    border: 1px solid rgba(255,255,255,0.25);
+    border-radius: 28px;
+    box-shadow: 0 0 35px rgba(255, 0, 50, 0.3);
+    backdrop-filter: blur(10px);
+    position: relative;
+    z-index: 2;
+}
+
+.heart {
+    font-size: 65px;
+    animation: bater 1s infinite;
+    margin-bottom: 10px;
+}
+
+@keyframes bater {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.15); }
+}
+
+h1 {
+    font-size: 27px;
+    margin-bottom: 15px;
+}
+
+p {
+    line-height: 1.7;
+}
+
+.subtitulo {
+    color: #ffc6d1;
+    margin-bottom: 25px;
+}
+
+.hora {
+    font-size: 39px;
+    font-weight: bold;
+    margin: 20px 0;
+    text-shadow: 0 0 15px #ff1744;
+}
+
+.contagem {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 25px 0;
+}
+
+.tempo {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 15px;
+    padding: 14px 10px;
+    min-width: 75px;
+}
+
+.numero {
+    display: block;
+    font-size: 27px;
+    font-weight: bold;
+}
+
+.rotulo {
+    font-size: 11px;
+    color: #ffc6d1;
+}
+
+.aviso {
+    font-size: 13px;
+    color: #ffdce3;
+    margin-top: 18px;
+}
+
+button {
+    background: #ff1744;
+    border: none;
+    padding: 14px 22px;
+    border-radius: 30px;
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 20px;
+    box-shadow: 0 0 15px rgba(255,23,68,0.4);
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: #ff4569;
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.declaracao {
+    display: none;
+    animation: aparecer 1.2s ease;
+    text-align: left;
+    margin-top: 25px;
+}
+
+.declaracao h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #ffb6c5;
+}
+
+.declaracao p {
+    margin-bottom: 15px;
+}
+
+.assinatura {
+    text-align: center;
+    color: #ffb6c5;
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+@keyframes aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.coracao-flutuante {
+    position: fixed;
+    bottom: -30px;
+    color: #ff8ba3;
+    pointer-events: none;
+    animation: subir 6s linear forwards;
+    z-index: 1;
+}
+
+@keyframes subir {
+    to {
+        transform: translateY(-110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+.pequeno {
+    font-size: 12px;
+    color: #ffc6d1;
+    margin-top: 22px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="heart">❤️</div>
+
+    <h1>Oi, meu benzinho!</h1>
+
+    <p class="subtitulo">
+        Tem uma coisa esperando por você...
+           Oque será que é?
+    </p>
+
+    <div id="bloqueado">
+
+        <p>🔒 Sua declaração será liberada às</p>
+
+        <div class="hora">13:46 ❤️</div>
+
+        <p>Faltam exatamente:</p>
+
+        <div class="contagem">
+            <div class="tempo">
+                <span class="numero" id="horas">00</span>
+                <span class="rotulo">HORAS</span>
+            </div>
+
+            <div class="tempo">
+                <span class="numero" id="minutos">00</span>
+                <span class="rotulo">MINUTOS</span>
+            </div>
+
+            <div class="tempo">
+                <span class="numero" id="segundos">00</span>
+                <span class="rotulo">SEGUNDOS</span>
+            </div>
+        </div>
+
+        <p id="mensagem">
+            Calma, amor! O amor é paciente.
+            Eu nem tanto, mas estou tentando. KKKKK ❤️
+        </p>
+
+        <p class="aviso">
+            Volte às 13:46 para abrir sua surpresa.
+        </p>
+
+    </div>
+
+    <div id="liberado" style="display:none;">
+
+        <h2>🔓 ACESSO AUTORIZADO!</h2>
+
+        <p>
+            Parabéns, amor! Você desbloqueou uma declaração
+            de amor de qualidade duvidosa e sentimentos muitos verdadeiros.
+        </p>
+
+        <button id="botaoDeclaracao" onclick="abrirDeclaracao()">
+            ❤️ Abrir Segredo
+        </button>
+
+        <p id="avisoJaAbriu" style="display:none; margin-top:20px;">
+            KKKKK, Benzinho, você já abriu sua declaração de hoje, Laly fofuxa❤️
+            <br>Volta amanhã, curiosinha.
+        </p>
+
+        <div class="declaracao" id="declaracao">
+
+            <h2>Para meu benzinho ❤️</h2>
+
+            <p>
+                Benzinho, eu queria começar dizendo que você é
+                uma pessoa muito especial para mim. Mas isso seria
+                pouco para explicar o quanto você consegue deixar
+                meus dias melhores.
+            </p>
+
+            <p>
+                Se eu pudesse te dar uma coisa, seria a chance
+            de se enxergar pelos meus olhos, nem que fosse
+            por um instante, para entender o quanto você
+            é incrível para mim.
+
+            </p>
+
+            <p>
+                Eu gosto do seu jeito, da sua existência e da
+            felicidade que sinto só de pensar em você.
+            Não preciso de uma data especial para gostar
+            de você, mas gostei da idade de ter um horário para
+            lembrar de te dizer isso.
+
+            </p>
+
+            <p>
+                Eu gosto de você de um jeito que vai além das
+                palavras bonitas. Gosto de conversar com você,
+                de rir com você e até de imaginar as pequenas
+                coisas que ainda podemos viver juntos.
+            </p>
+
+            <p>
+                Talvez 13:46 seja apenas um horário no relógio
+            para todo mundo, mas eu quis transformar esse
+            momento em algo especial pra ti.
+
+            </p>
+
+            <p>
+                Quero que você saiba que é querida, admirada e
+                que tem alguém aqui que fica feliz só de poder
+                fazer parte do seu dia.
+            </p>
+
+            <p>
+                Não prometo ser perfeito, mas quero continuar
+                aprendendo a te fazer sorrir, cuidando do que
+                temos e criando lembranças bonitas com você.
+            </p>
+
+            <p>
+                Se eu pudesse escolher um lugar para estar agora,
+                provavelmente escolheria um lugar ao seu lado.
+            </p>
+
+            <p>
+                Eu gosto muito de você, meu benzinho.
+                Que seu dia tenha motivos para sorrir e que,
+                entre eles, eu possa ser um dos principais.
+            </p>
+
+            <div class="assinatura">
+                Com carinho, para você. ❤️
+            </div>
+
+        </div>
+
+    </div>
+
+    <p class="pequeno">
+        Feito especialmente para uma menina que vale cada segundo.
+    </p>
+
+</div>
+
+<script>
+const HORARIO_LIBERACAO = 13 * 60 + 46;
+
+function obterDataHoje() {
+    const agora = new Date();
+
+    return agora.getFullYear() + "-" +
+        String(agora.getMonth() + 1).padStart(2, "0") + "-" +
+        String(agora.getDate()).padStart(2, "0");
+}
+
+function atualizarContagem() {
+    const agora = new Date();
+
+    const minutosAgora =
+        agora.getHours() * 60 + agora.getMinutes();
+
+    const segundosAgora =
+        minutosAgora * 60 + agora.getSeconds();
+
+    const segundosLiberacao =
+        HORARIO_LIBERACAO * 60;
+
+    const hoje = obterDataHoje();
+    const chave = "benzinho_abriu_" + hoje;
+
+    // Se já abriu hoje, não permite abrir novamente.
+    if (localStorage.getItem(chave)) {
+        document.getElementById("bloqueado").style.display = "none";
+        document.getElementById("liberado").style.display = "block";
+
+        document.getElementById("botaoDeclaracao").style.display = "none";
+        document.getElementById("avisoJaAbriu").style.display = "block";
+        document.getElementById("declaracao").style.display = "none";
+
+        document.getElementById("liberado").querySelector("h2").textContent =
+            "❤️ Surpresa de hoje concluída!";
+
+        return;
+    }
+
+    let faltam = segundosLiberacao - segundosAgora;
+
+    // Antes das 13:46, mostra a contagem.
+    if (faltam > 0) {
+        document.getElementById("bloqueado").style.display = "block";
+        document.getElementById("liberado").style.display = "none";
+
+        const horas = Math.floor(faltam / 3600);
+        const minutos = Math.floor((faltam % 3600) / 60);
+        const segundos = faltam % 60;
+
+        document.getElementById("horas").textContent =
+            String(horas).padStart(2, "0");
+
+        document.getElementById("minutos").textContent =
+            String(minutos).padStart(2, "0");
+
+        document.getElementById("segundos").textContent =
+            String(segundos).padStart(2, "0");
+    } else {
+        // Depois das 13:46, libera o botão.
+        document.getElementById("bloqueado").style.display = "none";
+        document.getElementById("liberado").style.display = "block";
+        document.getElementById("botaoDeclaracao").style.display = "inline-block";
+        document.getElementById("avisoJaAbriu").style.display = "none";
+
+        document.getElementById("liberado").querySelector("h2").textContent =
+            "🔓 ACESSO AUTORIZADO!";
+    }
+}
+
+function abrirDeclaracao() {
+    const agora = new Date();
+
+    // Não libera antes das 13:46.
+    const minutosAgora =
+        agora.getHours() * 60 + agora.getMinutes();
+
+    if (minutosAgora < HORARIO_LIBERACAO) {
+        return;
+    }
+
+    const hoje = obterDataHoje();
+    const chave = "benzinho_abriu_" + hoje;
+
+    // Verifica novamente no momento do clique.
+    if (localStorage.getItem(chave)) {
+        atualizarContagem();
+        return;
+    }
+
+    // Registra a abertura antes de mostrar a declaração.
+    localStorage.setItem(chave, "sim");
+
+    document.getElementById("botaoDeclaracao").style.display = "none";
+    document.getElementById("avisoJaAbriu").style.display = "block";
+    document.getElementById("declaracao").style.display = "block";
+
+    document.getElementById("liberado").querySelector("h2").textContent =
+        "❤️ Sua declaração foi aberta!";
+
+    document.getElementById("avisoJaAbriu").innerHTML =
+        "KKKKK, Benzinho, você já abriu sua declaração de hoje! ❤️" +
+        "<br>Volta amanhã, curiosinha.";
+
+    document.getElementById("declaracao").scrollIntoView({
+        behavior: "smooth",
+        block: "nearest"
+    });
+
+    criarCoracoes(20);
+}
+
+function criarCoracoes(quantidade = 1) {
+    for (let i = 0; i < quantidade; i++) {
+        const coracao = document.createElement("div");
+
+        coracao.className = "coracao-flutuante";
+        coracao.textContent = Math.random() > 0.5 ? "❤️" : "💕";
+
+        coracao.style.left = Math.random() * 100 + "vw";
+        coracao.style.fontSize =
+            (15 + Math.random() * 20) + "px";
+
+        coracao.style.animationDuration =
+            (4 + Math.random() * 4) + "s";
+
+        document.body.appendChild(coracao);
+
+        setTimeout(() => coracao.remove(), 8000);
+    }
+}
+
+setInterval(() => criarCoracoes(), 1800);
+
+atualizarContagem();
+setInterval(atualizarContagem, 1000);
+</script>
+
+</body>
+</html>
+
+
+
+
